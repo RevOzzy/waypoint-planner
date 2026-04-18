@@ -649,7 +649,7 @@ function loadProject(id) {
   drawnItems.clearLayers();
   if (state.polygon && state.polygon.length >= 3) {
     const latlngs = state.polygon.map(([la,lo]) => L.latLng(la, lo));
-    const poly = L.polygon(latlngs, { color: '#00b4d8', fillColor: '#00b4d8', fillOpacity: 0.15, weight: 2 });
+    const poly = L.polygon(latlngs, { color: '#d84f00', fillColor: '#d88c00', fillOpacity: 0.15, weight: 2 });
     drawnItems.addLayer(poly);
     map.fitBounds(poly.getBounds(), { padding: [40, 40] });
     showEditBtn(true);
