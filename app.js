@@ -405,7 +405,7 @@ function updateMapDisplay() {
   }
 
   flightLineLayer = L.polyline(path, {
-    color: '#00b4d8', weight: 2, opacity: 0.85,
+    color: '#f97316', weight: 2, opacity: 0.85,
   }).addTo(map);
 }
 
