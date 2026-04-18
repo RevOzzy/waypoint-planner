@@ -71,3 +71,7 @@ git push -u origin main
 ```
 GSD (cm/px) = (sensorWidth_mm × altitude_m × 100) / (focalLength_mm × imageWidth_px)
 ```
+
+## License
+
+MIT License. See the LICENSE file for details.
