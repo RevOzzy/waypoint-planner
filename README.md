@@ -1,18 +1,83 @@
 # Waypoint Planner
 
-A browser-based drone mapping mission planner. No backend, no build step — just open `index.html`.
+A lightweight browser-based waypoint planner for drone missions with interactive maps, custom drone profiles, and KMZ export.
+
+---
+
+## Overview
+
+Waypoint Planner is a simple, no-build web app for planning and organizing drone waypoint missions directly in the browser. It allows you to place waypoints, draw routes and areas, measure distances, and export mission data without requiring any backend or installation.
+
+This project is designed to be fast, portable, and easy to run locally.
+
+
+---
 
 ## Quick Start
 
-```
-# Option 1 — open directly (most browsers block fetch() on file:// for JSON)
-# Use a local server instead:
+Because the app loads local JSON files, you must run it from a local web server.
+
+### Option 1: Python (recommended)
+
+python -m http.server 8000
+
+Open in your browser:
+
+http://localhost:8000
+
+---
+
+### Option 2: Node
 
 npx serve .
-# or
-python -m http.server 8080
-# then open http://localhost:8080
-```
+
+---
+
+## Usage
+
+1. Open the app in your browser  
+2. Navigate the map to your area of interest  
+3. Add waypoints, routes, or polygons  
+4. Adjust settings or load a drone profile  
+5. Save your project locally (browser storage)  
+6. Export as KMZ when ready  
+
+---
+
+## Data Storage
+
+- Projects and settings are stored in your browser using localStorage  
+- Data is not uploaded anywhere  
+- Clearing your browser data will remove saved projects  
+- Export important work as KMZ for backup  
+
+---
+
+## External Services
+
+This app relies on third-party services for map tiles and geocoding:
+
+- OpenStreetMap  
+- Esri World Imagery  
+- Nominatim (search)  
+
+These services require an internet connection and may have rate limits or availability constraints.
+
+---
+
+## File Structure
+
+waypoint-planner/
+│
+├── index.html  
+├── app.js  
+├── styles.css  
+├── drone-profiles.json  
+├── help.html  
+├── README.md  
+└── docs/  
+
+---
 
 > **Note:** Chrome/Edge block `fetch()` on `file://` URLs due to CORS policy. Firefox may work
 > directly but a local server is recommended for reliability.
@@ -29,18 +94,19 @@ python -m http.server 8080
   accepts; auto-splits into multiple files if waypoints exceed the 65 535 DJI limit
 - **Project manager** — up to 20 named projects saved to localStorage with load / duplicate / delete
 
-## File Structure
-
-```
-waypoint-planner/
-  index.html          Main app shell
-  style.css           Dark-theme CSS
-  app.js              All application logic (vanilla JS)
-  drone-profiles.json Drone sensor specs
-  README.md           This file
-```
+---
 
 ## Adding Drone Profiles
+
+Drone profiles can be customized in:
+
+drone-profiles.json
+
+You can define parameters such as:
+- speed  
+- altitude  
+- camera characteristics  
+- mission-specific settings  
 
 Edit `drone-profiles.json` and add an entry following this schema:
 
@@ -55,16 +121,46 @@ Edit `drone-profiles.json` and add an entry following this schema:
   "droneEnumValue": 67,     // DJI WPML enum
   "droneSubEnumValue": 0
 }
-```
 
-## Pushing to GitHub
+---
 
-```bash
-# Create a new repo on github.com, then:
-git remote add origin https://github.com/YOUR_USERNAME/waypoint-planner.git
-git branch -M main
-git push -u origin main
-```
+## Limitations
+
+- Requires internet for map tiles and search  
+- Not a flight control system  
+- No real-time drone integration  
+- Data is stored locally unless exported  
+- Browser storage is not permanent  
+
+---
+
+## Roadmap (Optional Ideas)
+
+- GPX/KML import support  
+- Elevation data integration  
+- Offline tile support  
+- Multi-project management UI  
+- Cloud sync (optional)  
+
+---
+
+## Contributing
+
+Contributions are welcome.
+
+If you want to improve the project:
+- Fork the repo  
+- Create a feature branch  
+- Submit a pull request  
+
+---
+
+## Security
+
+If you discover a vulnerability or issue, please open an issue or contact privately before public disclosure.
+
+---
+
 
 ## GSD Formula
 
