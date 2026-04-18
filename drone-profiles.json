@@ -1,0 +1,26 @@
+{
+  "dji-mini-4-pro": {
+    "name": "DJI Mini 4 Pro",
+    "sensor": "1/1.3\" CMOS",
+    "resolution": "48MP (8064×6048)",
+    "focalLength": 24,
+    "sensorWidth": 9.6,
+    "sensorHeight": 7.2,
+    "imageWidth": 8064,
+    "imageHeight": 6048,
+    "droneEnumValue": 68,
+    "droneSubEnumValue": 0
+  },
+  "dji-air-3s": {
+    "name": "DJI Air 3S",
+    "sensor": "1/1.3\" CMOS",
+    "resolution": "50MP (8192×6144)",
+    "focalLength": 24,
+    "sensorWidth": 9.6,
+    "sensorHeight": 7.2,
+    "imageWidth": 8192,
+    "imageHeight": 6144,
+    "droneEnumValue": 77,
+    "droneSubEnumValue": 0
+  }
+}

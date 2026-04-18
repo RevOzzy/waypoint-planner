@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waypoint Planner</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <div id="sidebar">
+      <div id="sidebar-header">
+        <span class="header-icon">&#9654;</span>
+        <h1>Waypoint Planner</h1>
+      </div>
+
+      <div id="sidebar-body">
+
+        <!-- Search -->
+        <div class="section">
+          <div class="search-row">
+            <input type="text" id="geocode-input" placeholder="Search location..." autocomplete="off">
+            <button id="geocode-btn" class="btn-icon" title="Search">&#9906;</button>
+          </div>
+        </div>
+
+        <!-- Units Toggle -->
+        <div class="section units-section">
+          <span class="units-label" id="label-imperial">Imperial</span>
+          <label class="toggle-switch">
+            <input type="checkbox" id="units-toggle">
+            <span class="toggle-slider"></span>
+          </label>
+          <span class="units-label" id="label-metric">Metric</span>
+        </div>
+
+        <!-- Drone Profile -->
+        <div class="section">
+          <div class="field-group">
+            <label class="field-label">Drone Profile</label>
+            <select id="drone-select" class="select-input"></select>
+          </div>
+        </div>
+
+        <!-- Flight Parameters -->
+        <div class="section">
+          <div class="field-group">
+            <label class="field-label" id="altitude-label">Altitude (ft)</label>
+            <input type="number" id="altitude-input" class="number-input" value="400" min="10" max="10000" step="10">
+          </div>
+          <div class="field-group">
+            <label class="field-label" id="speed-label">Speed (mph)</label>
+            <input type="number" id="speed-input" class="number-input" value="20" min="1" max="200" step="1">
+          </div>
+          <div class="overlap-row">
+            <div class="field-group">
+              <label class="field-label">Front Overlap %</label>
+              <input type="number" id="front-overlap" class="number-input" value="75" min="10" max="95" step="5">
+            </div>
+            <div class="field-group">
+              <label class="field-label">Side Overlap %</label>
+              <input type="number" id="side-overlap" class="number-input" value="70" min="10" max="95" step="5">
+            </div>
+          </div>
+        </div>
+
+        <!-- Map Controls -->
+        <div class="section">
+          <div class="btn-row">
+            <button id="draw-btn" class="btn btn-primary">&#9998; Draw Area</button>
+            <button id="edit-btn" class="btn btn-secondary" style="display:none">&#9998; Edit</button>
+            <button id="done-edit-btn" class="btn btn-accent" style="display:none">&#10003; Done</button>
+            <button id="clear-btn" class="btn btn-danger">&#10005; Clear</button>
+          </div>
+          <div class="btn-row">
+            <button id="layer-toggle-btn" class="btn btn-secondary btn-full">&#9680; Toggle Map Layer</button>
+          </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="section">
+          <h3 class="section-title">Mission Stats</h3>
+          <div id="stats-panel">
+            <p class="stats-empty">Draw a polygon to see mission stats.</p>
+          </div>
+        </div>
+
+        <!-- Export -->
+        <div class="section">
+          <button id="export-btn" class="btn btn-export btn-full">&#8595; Export KMZ</button>
+        </div>
+
+        <!-- Projects -->
+        <div class="section">
+          <div class="section-header">
+            <h3 class="section-title">Saved Projects</h3>
+            <button id="new-project-btn" class="btn btn-sm btn-primary">+ New</button>
+          </div>
+          <div id="project-list"></div>
+        </div>
+
+      </div><!-- /sidebar-body -->
+    </div><!-- /sidebar -->
+
+    <div id="map"></div>
+  </div><!-- /app -->
+
+  <div id="toast-container"></div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
