@@ -136,11 +136,16 @@ function startDraw() {
   if (editingLayer) finishEdit();
 
   drawHandler = new L.Draw.Polygon(map, {
-    shapeOptions: { color: '#00b4d8', fillColor: '#00b4d8', fillOpacity: 0.15, weight: 2 },
-    allowIntersection: false,
-    showArea: true,
-    metric: true,
-  });
+  shapeOptions: {
+    color: '#f97316',
+    fillColor: '#f97316',
+    fillOpacity: 0.12,
+    weight: 2
+  },
+  allowIntersection: false,
+  showArea: true,
+  metric: true,
+});
   drawHandler.enable();
   setDrawing(true);
 }
