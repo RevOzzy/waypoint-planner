@@ -79,7 +79,7 @@ waypoint-planner/
 │
 ├── index.html  
 ├── app.js  
-├── styles.css  
+├── style.css  
 ├── drone-profiles.json  
 ├── help.html  
 ├── README.md  
@@ -95,7 +95,7 @@ waypoint-planner/
 - **Satellite & street map** with location search (Nominatim / OpenStreetMap)
 - **Draw a polygon** boundary, edit vertices, or clear and redraw
 - **Lawnmower (bidi) flight line generation** clipped to polygon with 5 m overshoot
-- **Drone profiles** — DJI Mini 4 Pro & DJI Air 3S (sensor specs stored in `drone-profiles.json`)
+- **Drone profiles** — includes DJI Mini, Air, Neo, and Mavic models, with specs stored in `drone-profiles.json`
 - **Imperial / Metric toggle** — all inputs and stats update instantly; preference saved to localStorage
 - **Live stats** — GSD, area, photo count, flight lines, estimated flight time, spacing, trigger interval
 - **DJI WPML KMZ export** — produces a `wpmz/template.kml` + `wpmz/waylines.wpml` zip that DJI Fly
