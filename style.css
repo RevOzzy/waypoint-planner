@@ -1,5 +1,4 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 :root {
   --bg-dark: #0f172a;
   --bg-medium: #162033;
@@ -453,7 +452,7 @@ select option {
 .toast-error   { background: rgba(248,113,113,0.12); border: 1px solid rgba(248,113,113,0.4); color: var(--danger); }
 
 /* ── Leaflet overrides ── */
-.leaflet-container { background: #1a1a2e; }
+.leaflet-container { background: #0f172a; }
 
 .leaflet-control-attribution {
   background: rgba(30,30,46,0.8) !important;
