@@ -1,4 +1,76 @@
 {
+  "dji-mini-1": {
+    "name": "DJI Mini (1st Gen)",
+    "sensor": "1/2.3\" CMOS",
+    "resolution": "12MP (4000×3000)",
+    "focalLength": 24,
+    "sensorWidth": 6.3,
+    "sensorHeight": 4.72,
+    "imageWidth": 4000,
+    "imageHeight": 3000,
+    "droneEnumValue": 57,
+    "droneSubEnumValue": 0
+  },
+  "dji-mini-2": {
+    "name": "DJI Mini 2",
+    "sensor": "1/2.3\" CMOS",
+    "resolution": "12MP (4000×3000)",
+    "focalLength": 24,
+    "sensorWidth": 6.3,
+    "sensorHeight": 4.72,
+    "imageWidth": 4000,
+    "imageHeight": 3000,
+    "droneEnumValue": 58,
+    "droneSubEnumValue": 0
+  },
+  "dji-mini-se": {
+    "name": "DJI Mini SE",
+    "sensor": "1/2.3\" CMOS",
+    "resolution": "12MP (4000×3000)",
+    "focalLength": 24,
+    "sensorWidth": 6.3,
+    "sensorHeight": 4.72,
+    "imageWidth": 4000,
+    "imageHeight": 3000,
+    "droneEnumValue": 59,
+    "droneSubEnumValue": 0
+  },
+  "dji-mini-2-se": {
+    "name": "DJI Mini 2 SE",
+    "sensor": "1/2.3\" CMOS",
+    "resolution": "12MP (4000×3000)",
+    "focalLength": 24,
+    "sensorWidth": 6.3,
+    "sensorHeight": 4.72,
+    "imageWidth": 4000,
+    "imageHeight": 3000,
+    "droneEnumValue": 95,
+    "droneSubEnumValue": 0
+  },
+  "dji-mini-3": {
+    "name": "DJI Mini 3",
+    "sensor": "1/1.3\" CMOS",
+    "resolution": "48MP (8064×6048)",
+    "focalLength": 24,
+    "sensorWidth": 9.6,
+    "sensorHeight": 7.2,
+    "imageWidth": 8064,
+    "imageHeight": 6048,
+    "droneEnumValue": 89,
+    "droneSubEnumValue": 0
+  },
+  "dji-mini-3-pro": {
+    "name": "DJI Mini 3 Pro",
+    "sensor": "1/1.3\" CMOS",
+    "resolution": "48MP (8064×6048)",
+    "focalLength": 24,
+    "sensorWidth": 9.6,
+    "sensorHeight": 7.2,
+    "imageWidth": 8064,
+    "imageHeight": 6048,
+    "droneEnumValue": 62,
+    "droneSubEnumValue": 0
+  },
   "dji-mini-4-pro": {
     "name": "DJI Mini 4 Pro",
     "sensor": "1/1.3\" CMOS",
@@ -11,6 +83,54 @@
     "droneEnumValue": 68,
     "droneSubEnumValue": 0
   },
+  "dji-mavic-air": {
+    "name": "DJI Mavic Air",
+    "sensor": "1/2.3\" CMOS",
+    "resolution": "12MP (4000×3000)",
+    "focalLength": 24,
+    "sensorWidth": 6.3,
+    "sensorHeight": 4.72,
+    "imageWidth": 4000,
+    "imageHeight": 3000,
+    "droneEnumValue": 14,
+    "droneSubEnumValue": 0
+  },
+  "dji-mavic-air-2": {
+    "name": "DJI Mavic Air 2",
+    "sensor": "1/2\" CMOS",
+    "resolution": "48MP (8000×6000)",
+    "focalLength": 24,
+    "sensorWidth": 6.4,
+    "sensorHeight": 4.8,
+    "imageWidth": 8000,
+    "imageHeight": 6000,
+    "droneEnumValue": 58,
+    "droneSubEnumValue": 0
+  },
+  "dji-air-2s": {
+    "name": "DJI Air 2S",
+    "sensor": "1\" CMOS",
+    "resolution": "20MP (5472×3648)",
+    "focalLength": 22,
+    "sensorWidth": 13.2,
+    "sensorHeight": 8.8,
+    "imageWidth": 5472,
+    "imageHeight": 3648,
+    "droneEnumValue": 67,
+    "droneSubEnumValue": 0
+  },
+  "dji-air-3": {
+    "name": "DJI Air 3",
+    "sensor": "1/1.3\" CMOS",
+    "resolution": "48MP (8064×6048)",
+    "focalLength": 24,
+    "sensorWidth": 9.6,
+    "sensorHeight": 7.2,
+    "imageWidth": 8064,
+    "imageHeight": 6048,
+    "droneEnumValue": 76,
+    "droneSubEnumValue": 0
+  },
   "dji-air-3s": {
     "name": "DJI Air 3S",
     "sensor": "1/1.3\" CMOS",
@@ -21,6 +141,78 @@
     "imageWidth": 8192,
     "imageHeight": 6144,
     "droneEnumValue": 77,
+    "droneSubEnumValue": 0
+  },
+  "dji-mavic-pro": {
+    "name": "DJI Mavic Pro",
+    "sensor": "1/2.3\" CMOS",
+    "resolution": "12MP (4000×3000)",
+    "focalLength": 28,
+    "sensorWidth": 6.3,
+    "sensorHeight": 4.72,
+    "imageWidth": 4000,
+    "imageHeight": 3000,
+    "droneEnumValue": 0,
+    "droneSubEnumValue": 0
+  },
+  "dji-mavic-2-pro": {
+    "name": "DJI Mavic 2 Pro",
+    "sensor": "1\" CMOS (Hasselblad L-Format)",
+    "resolution": "20MP (5472×3648)",
+    "focalLength": 28,
+    "sensorWidth": 13.2,
+    "sensorHeight": 8.8,
+    "imageWidth": 5472,
+    "imageHeight": 3648,
+    "droneEnumValue": 8,
+    "droneSubEnumValue": 0
+  },
+  "dji-mavic-3": {
+    "name": "DJI Mavic 3",
+    "sensor": "4/3\" CMOS (Hasselblad L-Format)",
+    "resolution": "20MP (5280×3956)",
+    "focalLength": 24,
+    "sensorWidth": 17.3,
+    "sensorHeight": 13.0,
+    "imageWidth": 5280,
+    "imageHeight": 3956,
+    "droneEnumValue": 60,
+    "droneSubEnumValue": 0
+  },
+  "dji-mavic-3-classic": {
+    "name": "DJI Mavic 3 Classic",
+    "sensor": "4/3\" CMOS (Hasselblad L-Format)",
+    "resolution": "20MP (5280×3956)",
+    "focalLength": 24,
+    "sensorWidth": 17.3,
+    "sensorHeight": 13.0,
+    "imageWidth": 5280,
+    "imageHeight": 3956,
+    "droneEnumValue": 63,
+    "droneSubEnumValue": 0
+  },
+  "dji-mavic-3-pro": {
+    "name": "DJI Mavic 3 Pro",
+    "sensor": "4/3\" CMOS (Hasselblad L-Format)",
+    "resolution": "20MP (5280×3956)",
+    "focalLength": 24,
+    "sensorWidth": 17.3,
+    "sensorHeight": 13.0,
+    "imageWidth": 5280,
+    "imageHeight": 3956,
+    "droneEnumValue": 64,
+    "droneSubEnumValue": 0
+  },
+  "dji-mavic-3-enterprise": {
+    "name": "DJI Mavic 3 Enterprise",
+    "sensor": "4/3\" CMOS",
+    "resolution": "20MP (5280×3956)",
+    "focalLength": 24,
+    "sensorWidth": 17.3,
+    "sensorHeight": 13.0,
+    "imageWidth": 5280,
+    "imageHeight": 3956,
+    "droneEnumValue": 61,
     "droneSubEnumValue": 0
   }
 }
