@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Waypoint Planner — Help & Documentation</title>
+  <link rel="stylesheet" href="help.css">
+</head>
+<body>
+
+  <nav class="topnav">
+    <a href="index.html" class="back-btn">&#8592; Back to Planner</a>
+    <span class="nav-title">Waypoint Planner &mdash; Help</span>
+    <span class="nav-version">v1.0</span>
+  </nav>
+
+  <div class="layout">
+
+    <!-- Sidebar TOC -->
+    <aside class="toc">
+      <p class="toc-heading">Contents</p>
+      <ul>
+        <li><a href="#quickstart">Quick Start</a></li>
+        <li><a href="#interface">Interface Overview</a></li>
+        <li><a href="#parameters">Flight Parameters</a>
+          <ul>
+            <li><a href="#altitude">Altitude</a></li>
+            <li><a href="#speed">Speed</a></li>
+            <li><a href="#overlap">Overlap</a></li>
+            <li><a href="#gsd">What is GSD?</a></li>
+          </ul>
+        </li>
+        <li><a href="#drawing">Drawing Your Area</a></li>
+        <li><a href="#stats">Reading the Stats</a>
+          <ul>
+            <li><a href="#shot-interval">Shot Interval Warning</a></li>
+          </ul>
+        </li>
+        <li><a href="#export">Exporting the KMZ</a></li>
+        <li><a href="#loading">Loading on Your Controller</a>
+          <ul>
+            <li><a href="#rc-n1">RC-N1 (Phone)</a></li>
+            <li><a href="#rc-screen">RC / RC 2 (Built-in Screen)</a></li>
+            <li><a href="#rc-pro">RC Pro</a></li>
+            <li><a href="#pilot2">DJI Pilot 2 (Enterprise)</a></li>
+          </ul>
+        </li>
+        <li><a href="#compatibility">Drone &amp; Controller Chart</a></li>
+        <li><a href="#tips">Tips &amp; Best Practices</a></li>
+        <li><a href="#troubleshooting">Troubleshooting</a></li>
+      </ul>
+    </aside>
+
+    <!-- Main content -->
+    <main class="content">
+
+      <h1>Waypoint Planner <span class="subtitle">Help &amp; Documentation</span></h1>
+      <p class="lead">A browser-based drone mapping mission planner. No account, no cloud, no cost — everything runs locally in your browser.</p>
+
+      <!-- ─── QUICK START ─── -->
+      <section id="quickstart">
+        <h2>Quick Start</h2>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <strong>Select your drone</strong>
+              <p>Pick your drone from the <em>Drone Profile</em> dropdown. The sensor specs load automatically.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <strong>Set your parameters</strong>
+              <p>Enter altitude, speed, and overlap percentages. Toggle Imperial / Metric at the top of the sidebar.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <strong>Draw your area</strong>
+              <p>Click <kbd>Draw Area</kbd>, click on the map to place vertices, then double-click to close the polygon.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <strong>Review the stats</strong>
+              <p>The sidebar updates instantly — check GSD, photo count, flight time, and the shot interval warning.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-body">
+              <strong>Export &amp; fly</strong>
+              <p>Click <kbd>Export KMZ</kbd> and load the file onto your controller. See <a href="#loading">Loading on Your Controller</a>.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── INTERFACE ─── -->
+      <section id="interface">
+        <h2>Interface Overview</h2>
+        <div class="diagram">
+          <div class="diagram-sidebar">
+            <div class="dia-row">&#9906; Search bar — geocode any address or location</div>
+            <div class="dia-row highlight">Imperial / Metric toggle</div>
+            <div class="dia-row">Drone profile selector</div>
+            <div class="dia-row">Altitude &amp; Speed inputs</div>
+            <div class="dia-row">Front Overlap / Side Overlap</div>
+            <div class="dia-row highlight">Draw Area · Edit · Clear</div>
+            <div class="dia-row">Toggle Map Layer (satellite ↔ street)</div>
+            <div class="dia-row">Mission Stats panel</div>
+            <div class="dia-row highlight">Export KMZ button</div>
+            <div class="dia-row">Saved Projects</div>
+          </div>
+          <div class="diagram-map">
+            <span>Satellite / Street Map</span>
+            <span class="dia-sub">Click to draw polygon<br>Flight lines appear automatically<br>Zoom / pan freely</span>
+          </div>
+        </div>
+
+        <h3>Map Controls</h3>
+        <table>
+          <thead><tr><th>Button</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td><kbd>Draw Area</kbd></td><td>Activates polygon drawing mode. Click to place each vertex; <strong>double-click</strong> to close the shape.</td></tr>
+            <tr><td><kbd>Edit Vertices</kbd></td><td>Appears after drawing. Drag any vertex to reshape the boundary. Click <kbd>Done</kbd> when finished.</td></tr>
+            <tr><td><kbd>Clear</kbd></td><td>Removes the polygon and all flight lines. Cannot be undone (save a project first).</td></tr>
+            <tr><td><kbd>Toggle Map Layer</kbd></td><td>Switches between ESRI satellite imagery and OpenStreetMap street tiles.</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Projects</h3>
+        <p>Up to <strong>20 named missions</strong> are stored in your browser's localStorage. Changes auto-save whenever a parameter changes. Use <kbd>+ New</kbd> to name and save a mission, and the ▶ / ⧉ / ✕ buttons to load, duplicate, or delete.</p>
+        <div class="callout info">Projects are stored in your browser only — they do not sync to the cloud. Clearing browser data will erase them.</div>
+      </section>
+
+      <!-- ─── PARAMETERS ─── -->
+      <section id="parameters">
+        <h2>Flight Parameters</h2>
+
+        <h3 id="altitude">Altitude</h3>
+        <p>The height above your takeoff point at which the drone will fly the entire mission. All altitude values in the KMZ are <em>relative to takeoff</em> — the drone does not read terrain elevation.</p>
+        <div class="callout warning">Stay within your local regulations. In the US, the FAA Part 107 maximum is <strong>400 ft AGL</strong> (above ground level), or 400 ft above a structure if within 400 ft of it.</div>
+        <p>Higher altitude → larger ground footprint → fewer photos needed → faster mission, but lower image resolution (higher GSD).<br>
+        Lower altitude → smaller footprint → more photos → slower mission, but finer resolution.</p>
+
+        <h3 id="speed">Speed</h3>
+        <p>The drone's flight speed along each scan line. Faster speeds complete missions quicker but can cause motion blur at lower altitudes and may not give the camera enough time between shots.</p>
+        <div class="callout warning">Watch the <strong>Shot Interval</strong> stat — if it turns red, your speed is too high for the camera to keep up. Reduce speed to the <em>Max Safe Speed</em> shown.</div>
+
+        <h3 id="overlap">Overlap</h3>
+        <div class="two-col">
+          <div>
+            <strong>Front Overlap</strong>
+            <p>How much consecutive photos along the same flight line overlap, expressed as a percentage of the image footprint. Typical mapping range: <strong>70–85%</strong>.</p>
+          </div>
+          <div>
+            <strong>Side Overlap</strong>
+            <p>How much adjacent flight lines overlap with each other. Typical mapping range: <strong>65–75%</strong>.</p>
+          </div>
+        </div>
+        <p>Higher overlap = more photos = more redundancy for photogrammetry software = slower mission and larger KMZ. Most photogrammetry pipelines (DroneDeploy, Pix4D, Agisoft Metashape) recommend at least 75% front and 65% side overlap.</p>
+
+        <h3 id="gsd">What is GSD?</h3>
+        <p><strong>Ground Sample Distance (GSD)</strong> is the real-world size of one pixel in your images when projected on the ground.</p>
+        <div class="formula">
+          GSD = (Sensor Width<sub>mm</sub> × Altitude<sub>m</sub> × 100) / (Focal Length<sub>mm</sub> × Image Width<sub>px</sub>)
+        </div>
+        <table>
+          <thead><tr><th>GSD</th><th>Typical use</th></tr></thead>
+          <tbody>
+            <tr><td>&lt; 1 cm/px</td><td>High-detail inspection, crack detection</td></tr>
+            <tr><td>1–3 cm/px</td><td>Agriculture, construction progress, survey-grade mapping</td></tr>
+            <tr><td>3–5 cm/px</td><td>General mapping, volumetrics, orthomosaics</td></tr>
+            <tr><td>&gt; 5 cm/px</td><td>Large-area overview, corridor mapping</td></tr>
+          </tbody>
+        </table>
+        <p>The planner uses each drone's <em>actual</em> focal length (not the 35 mm equivalent) and physical sensor dimensions for accurate GSD calculation.</p>
+      </section>
+
+      <!-- ─── DRAWING ─── -->
+      <section id="drawing">
+        <h2>Drawing Your Mission Area</h2>
+        <ol>
+          <li>Use the <strong>search bar</strong> to fly to your location, or pan/zoom the map manually.</li>
+          <li>Click <kbd>Draw Area</kbd>. The cursor changes to a crosshair.</li>
+          <li>Click each corner of your survey boundary. A preview polygon appears as you click.</li>
+          <li><strong>Double-click</strong> the final vertex to close the polygon.</li>
+          <li>Flight lines generate automatically inside the boundary.</li>
+          <li>To adjust, click <kbd>Edit Vertices</kbd> and drag any point. Click <kbd>Done</kbd> to confirm.</li>
+        </ol>
+        <div class="callout info">
+          Flight lines use a <strong>bidirectional lawnmower pattern</strong> — the drone alternates direction on each pass to minimise turning time. A 5-metre overshoot buffer is added beyond the polygon edge on each line end to ensure full coverage.
+        </div>
+        <p>The flight path drawn on the map shows the <em>complete route</em>, including the connecting turns between rows.</p>
+      </section>
+
+      <!-- ─── STATS ─── -->
+      <section id="stats">
+        <h2>Reading the Stats</h2>
+        <table>
+          <thead><tr><th>Stat</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td><strong>GSD</strong></td><td>Ground Sample Distance — real-world size of one image pixel at your chosen altitude.</td></tr>
+            <tr><td><strong>Area</strong></td><td>Area of the drawn polygon (acres or hectares).</td></tr>
+            <tr><td><strong>Photos</strong></td><td>Total number of waypoints / photo triggers in the mission.</td></tr>
+            <tr><td><strong>Flight Lines</strong></td><td>Number of parallel scan passes.</td></tr>
+            <tr><td><strong>Est. Flight Time</strong></td><td>Line length ÷ speed + 3 s per turn. Does not include take-off, landing, or RTH time.</td></tr>
+            <tr><td><strong>Line Spacing</strong></td><td>Distance between adjacent parallel passes (determined by side overlap).</td></tr>
+            <tr><td><strong>Trigger Interval</strong></td><td>Distance between photo triggers along each line (determined by front overlap).</td></tr>
+            <tr><td><strong>Shot Interval</strong></td><td>Actual seconds between shots at your current speed. <span class="badge-red">Red</span> = too fast for the camera.</td></tr>
+            <tr><td><strong>Max Safe Speed</strong></td><td>Fastest speed at which the camera can keep up with the trigger interval.</td></tr>
+          </tbody>
+        </table>
+
+        <h3 id="shot-interval">Shot Interval Warning</h3>
+        <p>Every drone has a minimum time between photos. If your speed is too high, the camera physically cannot fire fast enough and you will have <strong>gaps in your coverage</strong> — even though the mission will appear to complete normally.</p>
+        <div class="callout danger">When <em>Shot Interval</em> turns red, reduce your speed to the <em>Max Safe Speed</em> shown, or increase altitude to widen the footprint and space triggers further apart.</div>
+        <table>
+          <thead><tr><th>Min Interval</th><th>Drones</th></tr></thead>
+          <tbody>
+            <tr><td>0.7 s</td><td>Mavic 2 Pro, Mavic 3, Mavic 3 Classic, Mavic 3 Pro, Mavic 3 Enterprise</td></tr>
+            <tr><td>1.0 s</td><td>Mini 3 Pro, Mini 4 Pro, Mini 5 Pro, Mavic Air 2, Air 2S, Air 3, Air 3S</td></tr>
+            <tr><td>2.0 s</td><td>Mini 1, Mini 2, Mini SE, Mini 2 SE, Mini 3, Mavic Air, Mavic Pro, Neo, Neo 2</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- ─── EXPORT ─── -->
+      <section id="export">
+        <h2>Exporting the KMZ</h2>
+        <p>Click <kbd>Export KMZ</kbd> to download the mission file. The file is named <code>waypoint-planner-mission.kmz</code>.</p>
+
+        <h3>What's inside the KMZ?</h3>
+        <p>A KMZ is a renamed ZIP file. This planner creates DJI's <strong>WPML format</strong>, which contains two files:</p>
+        <div class="file-tree">
+          <div class="ft-item ft-folder">wpmz/</div>
+          <div class="ft-item ft-file">&#8627; template.kml &nbsp;<span class="ft-desc">Mission configuration — drone type, speed, altitude, waypoint list with photo actions</span></div>
+          <div class="ft-item ft-file">&#8627; waylines.wpml &nbsp;<span class="ft-desc">Execution file — same waypoints with total distance and duration metadata</span></div>
+        </div>
+        <p>Each waypoint encodes: GPS coordinates, altitude (relative to takeoff), flight speed, heading mode, and a <em>takePhoto</em> action. The drone fires the camera each time it reaches a waypoint.</p>
+
+        <h3>Large missions — automatic file splitting</h3>
+        <p>DJI controllers have a hard limit of <strong>65,535 waypoints per mission file</strong>. If your mission exceeds this, the planner will ask to split the export into numbered files (<code>part1.kmz</code>, <code>part2.kmz</code>, …). Load them as separate missions and fly them back-to-back.</p>
+      </section>
+
+      <!-- ─── LOADING ─── -->
+      <section id="loading">
+        <h2>Loading the KMZ on Your Controller</h2>
+        <div class="callout info">The WPML format is supported by <strong>DJI Fly</strong> (version 1.12+) and <strong>DJI Pilot 2</strong>. Older apps (DJI GO 4, DJI GO) do not support this format.</div>
+
+        <!-- RC-N1 -->
+        <h3 id="rc-n1">RC-N1 Controller (Phone required)</h3>
+        <p>The RC-N1 uses your smartphone running DJI Fly. The KMZ file must be on your phone.</p>
+        <h4>Android</h4>
+        <ol>
+          <li>Transfer <code>waypoint-planner-mission.kmz</code> to your phone via USB, AirDrop, email, or cloud storage.</li>
+          <li>Open <strong>DJI Fly</strong> → tap your drone on the home screen.</li>
+          <li>Tap the <strong>&#9654; Fly</strong> button to enter the camera view.</li>
+          <li>Tap the <strong>three-dot menu</strong> (top-right) → <strong>Flight Route</strong>.</li>
+          <li>Tap <strong>Import</strong> → navigate to your KMZ file → select it.</li>
+          <li>The mission loads on the map. Tap <strong>Start</strong> to begin.</li>
+        </ol>
+        <h4>iOS (iPhone/iPad)</h4>
+        <ol>
+          <li>Save the KMZ to your <strong>Files</strong> app (iCloud Drive, On My iPhone, etc.).</li>
+          <li>In DJI Fly, follow the same steps above — the iOS file picker will open.</li>
+        </ol>
+        <div class="callout warning">DJI Fly waypoint missions require the <strong>Waypoint</strong> feature to be enabled in your DJI account. You may need to agree to a liability waiver on first use.</div>
+
+        <!-- RC Screen -->
+        <h3 id="rc-screen">DJI RC / RC 2 (Built-in Screen)</h3>
+        <p>These controllers run DJI Fly on an Android-based built-in screen. No phone needed.</p>
+        <ol>
+          <li>Connect the controller to your PC or Mac with a <strong>USB-C cable</strong>.</li>
+          <li>The controller appears as a USB storage device. Open it in File Explorer / Finder.</li>
+          <li>Navigate to <code>Internal Storage / DJI / missions /</code> (create the folder if it doesn't exist).</li>
+          <li>Copy <code>waypoint-planner-mission.kmz</code> into that folder.</li>
+          <li>Safely eject the controller, then disconnect the cable.</li>
+          <li>On the controller: open <strong>DJI Fly</strong> → camera view → three-dot menu → <strong>Flight Route</strong> → <strong>Import</strong>.</li>
+          <li>Select your file and tap <strong>Start</strong>.</li>
+        </ol>
+        <div class="callout info">Alternatively, use the <strong>DJI Assistant 2</strong> app to manage files on the RC without manually browsing folders.</div>
+
+        <!-- RC Pro -->
+        <h3 id="rc-pro">DJI RC Pro (Built-in Screen)</h3>
+        <p>The RC Pro is a higher-spec version of the RC with a brighter screen and longer battery. File transfer is identical to the RC / RC 2 above.</p>
+        <p>The RC Pro also supports <strong>Wi-Fi file transfer</strong>:</p>
+        <ol>
+          <li>Enable Wi-Fi on the RC Pro (Settings → Wi-Fi).</li>
+          <li>Connect your computer to the same network.</li>
+          <li>Access the RC Pro's shared storage via its IP address in a browser or file manager.</li>
+          <li>Copy the KMZ file into <code>DJI / missions /</code>.</li>
+        </ol>
+
+        <!-- Pilot 2 -->
+        <h3 id="pilot2">DJI Pilot 2 (Enterprise Drones)</h3>
+        <p>DJI Pilot 2 is used with enterprise drones (Mavic 3 Enterprise) and enterprise controllers (RC Plus, Smart Controller Enterprise).</p>
+        <ol>
+          <li>Connect your RC Plus to a PC via USB-C.</li>
+          <li>Copy the KMZ to <code>Internal Storage / DJI / missions /</code>.</li>
+          <li>Open <strong>DJI Pilot 2</strong> → <strong>Plan</strong> → <strong>Route Library</strong>.</li>
+          <li>Tap <strong>Import</strong> → select the KMZ file.</li>
+          <li>Review the mission on the map and tap <strong>Execute</strong>.</li>
+        </ol>
+        <div class="callout info">DJI Pilot 2 offers additional enterprise features like terrain follow and RTK positioning that are not configured by this planner.</div>
+      </section>
+
+      <!-- ─── COMPATIBILITY ─── -->
+      <section id="compatibility">
+        <h2>Drone &amp; Controller Compatibility Chart</h2>
+        <div class="callout warning">Waypoint missions are a <strong>premium feature</strong> in DJI Fly. They are not available on all drones, even if the drone supports DJI Fly. Always verify your drone's firmware is up to date.</div>
+        <table class="compat-table">
+          <thead>
+            <tr>
+              <th>Drone</th>
+              <th>App</th>
+              <th>Compatible Controllers</th>
+              <th>WPML Waypoints</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mini 1 (1st Gen)</td>
+              <td>DJI Fly</td>
+              <td>RC-N1</td>
+              <td><span class="no">✗ Not supported</span></td>
+            </tr>
+            <tr>
+              <td>Mini 2</td>
+              <td>DJI Fly</td>
+              <td>RC-N1</td>
+              <td><span class="no">✗ Not supported</span></td>
+            </tr>
+            <tr>
+              <td>Mini SE / Mini 2 SE</td>
+              <td>DJI Fly</td>
+              <td>RC-N1</td>
+              <td><span class="no">✗ Not supported</span></td>
+            </tr>
+            <tr>
+              <td>Mini 3</td>
+              <td>DJI Fly</td>
+              <td>RC-N1, RC 2</td>
+              <td><span class="no">✗ Not supported</span></td>
+            </tr>
+            <tr>
+              <td>Mini 3 Pro</td>
+              <td>DJI Fly</td>
+              <td>RC-N1, RC, RC 2</td>
+              <td><span class="yes">✓ Supported</span></td>
+            </tr>
+            <tr>
+              <td>Mini 4 Pro</td>
+              <td>DJI Fly</td>
+              <td>RC-N1, RC 2</td>
+              <td><span class="yes">✓ Supported</span></td>
+            </tr>
+            <tr>
+              <td>Mini 5 Pro</td>
+              <td>DJI Fly</td>
+              <td>RC-N1, RC 2, RC Pro</td>
+              <td><span class="yes">✓ Supported</span></td>
+            </tr>
+            <tr>
+              <td>Mavic Air (1st Gen)</td>
+              <td>DJI GO 4</td>
+              <td>RC-N1 (older)</td>
+              <td><span class="no">✗ GO 4 — not WPML</span></td>
+            </tr>
+            <tr>
+              <td>Mavic Air 2</td>
+              <td>DJI Fly</td>
+              <td>RC-N1</td>
+              <td><span class="partial">~ Limited support</span></td>
+            </tr>
+            <tr>
+              <td>Air 2S</td>
+              <td>DJI Fly</td>
+              <td>RC-N1, RC, RC Pro</td>
+              <td><span class="yes">✓ Supported</span></td>
+            </tr>
+            <tr>
+              <td>Air 3</td>
+              <td>DJI Fly</td>
+              <td>RC-N1, RC 2, RC Pro</td>
+              <td><span class="yes">✓ Supported</span></td>
+            </tr>
+            <tr>
+              <td>Air 3S</td>
+              <td>DJI Fly</td>
+              <td>RC-N1, RC 2, RC Pro</td>
+              <td><span class="yes">✓ Supported</span></td>
+            </tr>
+            <tr>
+              <td>Neo / Neo 2</td>
+              <td>DJI Fly</td>
+              <td>RC-N1, DJI Neo RC</td>
+              <td><span class="no">✗ Not supported</span></td>
+            </tr>
+            <tr>
+              <td>Mavic Pro</td>
+              <td>DJI GO 4</td>
+              <td>DJI Remote (OcuSync)</td>
+              <td><span class="no">✗ GO 4 — not WPML</span></td>
+            </tr>
+            <tr>
+              <td>Mavic 2 Pro</td>
+              <td>DJI GO 4</td>
+              <td>DJI Remote (OcuSync 2)</td>
+              <td><span class="no">✗ GO 4 — not WPML</span></td>
+            </tr>
+            <tr>
+              <td>Mavic 3</td>
+              <td>DJI Fly</td>
+              <td>RC-N1, RC, RC Pro</td>
+              <td><span class="yes">✓ Supported</span></td>
+            </tr>
+            <tr>
+              <td>Mavic 3 Classic</td>
+              <td>DJI Fly</td>
+              <td>RC-N1, RC, RC Pro</td>
+              <td><span class="yes">✓ Supported</span></td>
+            </tr>
+            <tr>
+              <td>Mavic 3 Pro</td>
+              <td>DJI Fly</td>
+              <td>RC-N1, RC 2, RC Pro</td>
+              <td><span class="yes">✓ Supported</span></td>
+            </tr>
+            <tr>
+              <td>Mavic 3 Enterprise</td>
+              <td>DJI Pilot 2</td>
+              <td>RC Plus, Smart Controller Enterprise</td>
+              <td><span class="yes">✓ Supported</span></td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="table-note">* DJI GO 4 drones can fly waypoint missions via <strong>DJI Ground Station Pro</strong> (iPad only) using a different mission format. The KMZ from this planner is not compatible with DJI GO 4 or Ground Station Pro.</p>
+      </section>
+
+      <!-- ─── TIPS ─── -->
+      <section id="tips">
+        <h2>Tips &amp; Best Practices</h2>
+
+        <h3>Planning</h3>
+        <ul>
+          <li><strong>Check the airspace</strong> before flying — use B4UFLY (US), NATS (UK), or your regional authority's tool.</li>
+          <li><strong>Scout the site</strong> on satellite view. Look for obstacles (trees, towers, buildings) that may fall within or near your polygon.</li>
+          <li><strong>Add 10–20% to your estimated flight time</strong> for take-off, landing, and return-to-home. Plan battery swaps accordingly.</li>
+          <li>For <strong>large areas</strong>, break the mission into battery-sized chunks and use multiple projects.</li>
+          <li>Use <strong>higher overlap</strong> (80/75) in areas with repetitive textures (corn fields, flat roofs) — photogrammetry software struggles to match low-overlap images in these conditions.</li>
+        </ul>
+
+        <h3>Altitude &amp; GSD</h3>
+        <ul>
+          <li>A GSD of <strong>2–3 cm/px</strong> is typically sufficient for agricultural scouting and construction progress monitoring.</li>
+          <li>For <strong>stockpile volumetrics</strong>, aim for 1–2 cm/px with 80%+ overlap on all sides.</li>
+          <li>For <strong>large corridor surveys</strong> (roads, pipelines), you can increase altitude and reduce overlap to cover ground faster.</li>
+        </ul>
+
+        <h3>Camera &amp; Conditions</h3>
+        <ul>
+          <li>Fly in <strong>consistent lighting</strong> — avoid missions that cross from shadow into sunlight mid-run, as exposure differences make stitching harder.</li>
+          <li>Fly within <strong>2 hours of solar noon</strong> for shortest shadows. Early morning / late afternoon light is great for visual inspection but produces long shadows that confuse photogrammetry.</li>
+          <li>Wind above <strong>15 mph (24 km/h)</strong> can cause the drone to drift, reducing overlap consistency. Check wind forecasts before flying.</li>
+          <li>Use <strong>fixed shutter speed</strong> where possible (not Auto) to prevent motion blur. A rule of thumb: shutter speed should be at least 1/(2 × GSD_cm × speed_m/s). For 2 cm GSD at 8 m/s, that's 1/32 s or faster.</li>
+        </ul>
+
+        <h3>Post-processing</h3>
+        <ul>
+          <li>Common photogrammetry apps: <strong>DroneDeploy</strong>, <strong>Pix4D</strong>, <strong>Agisoft Metashape</strong>, <strong>OpenDroneMap</strong> (open source).</li>
+          <li>Most apps accept a folder of JPEG or DNG images. You don't need to import the KMZ into the processing software.</li>
+          <li>Add <strong>ground control points (GCPs)</strong> for survey-grade accuracy. Without GCPs, expect 1–3 m horizontal and 2–5 m vertical absolute accuracy.</li>
+        </ul>
+      </section>
+
+      <!-- ─── TROUBLESHOOTING ─── -->
+      <section id="troubleshooting">
+        <h2>Troubleshooting</h2>
+
+        <details>
+          <summary>The map doesn't load / shows a grey screen</summary>
+          <p>The map requires an internet connection to fetch tiles from ESRI / OpenStreetMap. Make sure you're connected. If tiles are missing, try toggling to the Street Map layer — it uses a different tile server.</p>
+          <p>If you opened <code>index.html</code> directly as a <code>file://</code> URL, Chrome and Edge may block the tile requests. Use a local server instead: <code>npx serve .</code> or <code>python -m http.server 8080</code>.</p>
+        </details>
+
+        <details>
+          <summary>No flight lines appear after drawing the polygon</summary>
+          <p>This happens when the polygon is too small relative to the line spacing. Try:</p>
+          <ul>
+            <li>Increasing altitude (larger footprint → wider line spacing → fewer lines needed)</li>
+            <li>Reducing overlap percentages</li>
+            <li>Drawing a larger polygon</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>The KMZ import fails on DJI Fly</summary>
+          <ul>
+            <li>Make sure the file extension is <code>.kmz</code> (not <code>.zip</code>).</li>
+            <li>Ensure DJI Fly is version <strong>1.12 or newer</strong>. Update via the App Store or Google Play.</li>
+            <li>Confirm your drone is one of the <a href="#compatibility">supported models</a> with waypoint mission support.</li>
+            <li>If using an RC / RC 2: the file must be in <code>Internal Storage / DJI / missions /</code>. Create the folder if it doesn't exist.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>DJI Fly says "Waypoint count exceeds limit"</summary>
+          <p>This occurs when the mission has more than 65,535 waypoints. The planner will warn you and offer to split into multiple KMZ files automatically. Load each part as a separate mission.</p>
+        </details>
+
+        <details>
+          <summary>The drone misses photos / coverage has gaps</summary>
+          <p>The most common cause is flying too fast for the camera's minimum photo interval. Check the <strong>Shot Interval</strong> stat — if it's red, reduce your speed. Also check:</p>
+          <ul>
+            <li>SD card write speed — use a Class 10 / U3 card. A slow card can cause the camera to skip triggers.</li>
+            <li>Photo format — shooting RAW+JPEG is slower than JPEG only.</li>
+            <li>Camera set to Single Shot mode, not Burst or AEB.</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>My saved projects disappeared</summary>
+          <p>Projects are stored in browser <code>localStorage</code>. They can be lost if you:</p>
+          <ul>
+            <li>Clear browser history / site data</li>
+            <li>Use a different browser or device</li>
+            <li>Open the app from a different URL (e.g., <code>file://</code> vs <code>localhost</code>)</li>
+          </ul>
+          <p>For long-term storage, export your mission as a KMZ before clearing browser data.</p>
+        </details>
+
+        <details>
+          <summary>Flight time estimate seems wrong</summary>
+          <p>The estimate is: <em>(total line length ÷ speed) + (number of lines − 1) × 3 s per turn</em>. It does <strong>not</strong> include:</p>
+          <ul>
+            <li>Take-off and climb to altitude (~30–60 s)</li>
+            <li>Transit from home point to mission start</li>
+            <li>Return-to-home at end</li>
+            <li>Wind resistance or deceleration at waypoints</li>
+          </ul>
+          <p>Add 2–5 minutes to the estimate for a realistic total battery draw.</p>
+        </details>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="page-footer">
+    <p>Waypoint Planner &mdash; open source, runs entirely in your browser. &nbsp;|&nbsp; <a href="https://github.com/RevOzzy/waypoint-planner" target="_blank">GitHub</a></p>
+  </footer>
+
+</body>
+</html>

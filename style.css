@@ -66,7 +66,26 @@ html, body {
   color: var(--accent);
   letter-spacing: 0.6px;
   text-transform: uppercase;
+  flex: 1;
 }
+
+.help-link {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-lighter);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: background 0.15s, color 0.15s;
+}
+.help-link:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
 
 #sidebar-body {
   overflow-y: auto;
