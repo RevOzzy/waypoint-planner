@@ -10,6 +10,14 @@ Waypoint Planner is a simple, no-build web app for planning and organizing drone
 
 This project is designed to be fast, portable, and easy to run locally.
 
+---
+
+![Waypoint Planner Screenshot](docs/screenshot.jpg)
+
+---
+
+## Live Demo
+https://revozzy.github.io/waypoint-planner/
 
 ---
 
