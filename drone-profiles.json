@@ -77,6 +77,19 @@
     "droneEnumValue": 62,
     "droneSubEnumValue": 0
   },
+  "dji-mini-5-pro": {
+    "name": "DJI Mini 5 Pro",
+    "sensor": "1\" CMOS",
+    "resolution": "50MP (8192×6144)",
+    "focalLength": 8.8,
+    "focalLengthEquiv": 24,
+    "sensorWidth": 13.2,
+    "sensorHeight": 8.8,
+    "imageWidth": 8192,
+    "imageHeight": 6144,
+    "droneEnumValue": 112,
+    "droneSubEnumValue": 0
+  },
   "dji-mini-4-pro": {
     "name": "DJI Mini 4 Pro",
     "sensor": "1/1.3\" CMOS",

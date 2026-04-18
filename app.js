@@ -383,7 +383,15 @@ function recompute() {
 function updateMapDisplay() {
   clearFlightLines();
   if (!state.flightLines.length) return;
-  flightLineLayer = L.polyline(state.flightLines, {
+
+  // Flatten into one continuous path so turns between lines are drawn
+  const path = [];
+  for (const [start, end] of state.flightLines) {
+    path.push(start);
+    path.push(end);
+  }
+
+  flightLineLayer = L.polyline(path, {
     color: '#00b4d8', weight: 2, opacity: 0.85,
   }).addTo(map);
 }
