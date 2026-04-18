@@ -139,7 +139,7 @@ function startDraw() {
   shapeOptions: {
     color: '#f97316',
     fillColor: '#f97316',
-    fillOpacity: 0.12,
+    fillOpacity: 0.15,
     weight: 2
   },
   allowIntersection: false,
@@ -405,7 +405,7 @@ function updateMapDisplay() {
   }
 
   flightLineLayer = L.polyline(path, {
-    color: '#f97316', weight: 2, opacity: 0.85,
+    color: '#ea580c', weight: 3, opacity: 0.85,
   }).addTo(map);
 }
 
