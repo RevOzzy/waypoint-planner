@@ -9,6 +9,7 @@
     "sensorHeight": 4.72,
     "imageWidth": 4000,
     "imageHeight": 3000,
+    "minPhotoIntervalSec": 2.0,
     "droneEnumValue": 57,
     "droneSubEnumValue": 0
   },
@@ -22,6 +23,7 @@
     "sensorHeight": 4.72,
     "imageWidth": 4000,
     "imageHeight": 3000,
+    "minPhotoIntervalSec": 2.0,
     "droneEnumValue": 58,
     "droneSubEnumValue": 0
   },
@@ -35,6 +37,7 @@
     "sensorHeight": 4.72,
     "imageWidth": 4000,
     "imageHeight": 3000,
+    "minPhotoIntervalSec": 2.0,
     "droneEnumValue": 59,
     "droneSubEnumValue": 0
   },
@@ -48,6 +51,7 @@
     "sensorHeight": 4.72,
     "imageWidth": 4000,
     "imageHeight": 3000,
+    "minPhotoIntervalSec": 2.0,
     "droneEnumValue": 95,
     "droneSubEnumValue": 0
   },
@@ -61,6 +65,7 @@
     "sensorHeight": 7.2,
     "imageWidth": 8064,
     "imageHeight": 6048,
+    "minPhotoIntervalSec": 2.0,
     "droneEnumValue": 89,
     "droneSubEnumValue": 0
   },
@@ -74,20 +79,8 @@
     "sensorHeight": 7.2,
     "imageWidth": 8064,
     "imageHeight": 6048,
+    "minPhotoIntervalSec": 1.0,
     "droneEnumValue": 62,
-    "droneSubEnumValue": 0
-  },
-  "dji-mini-5-pro": {
-    "name": "DJI Mini 5 Pro",
-    "sensor": "1\" CMOS",
-    "resolution": "50MP (8192×6144)",
-    "focalLength": 8.8,
-    "focalLengthEquiv": 24,
-    "sensorWidth": 13.2,
-    "sensorHeight": 8.8,
-    "imageWidth": 8192,
-    "imageHeight": 6144,
-    "droneEnumValue": 112,
     "droneSubEnumValue": 0
   },
   "dji-mini-4-pro": {
@@ -100,7 +93,22 @@
     "sensorHeight": 7.2,
     "imageWidth": 8064,
     "imageHeight": 6048,
+    "minPhotoIntervalSec": 1.0,
     "droneEnumValue": 68,
+    "droneSubEnumValue": 0
+  },
+  "dji-mini-5-pro": {
+    "name": "DJI Mini 5 Pro",
+    "sensor": "1\" CMOS",
+    "resolution": "50MP (8192×6144)",
+    "focalLength": 8.8,
+    "focalLengthEquiv": 24,
+    "sensorWidth": 13.2,
+    "sensorHeight": 8.8,
+    "imageWidth": 8192,
+    "imageHeight": 6144,
+    "minPhotoIntervalSec": 1.0,
+    "droneEnumValue": 112,
     "droneSubEnumValue": 0
   },
   "dji-mavic-air": {
@@ -113,6 +121,7 @@
     "sensorHeight": 4.72,
     "imageWidth": 4000,
     "imageHeight": 3000,
+    "minPhotoIntervalSec": 2.0,
     "droneEnumValue": 14,
     "droneSubEnumValue": 0
   },
@@ -126,6 +135,7 @@
     "sensorHeight": 4.8,
     "imageWidth": 8000,
     "imageHeight": 6000,
+    "minPhotoIntervalSec": 1.0,
     "droneEnumValue": 58,
     "droneSubEnumValue": 0
   },
@@ -139,6 +149,7 @@
     "sensorHeight": 8.8,
     "imageWidth": 5472,
     "imageHeight": 3648,
+    "minPhotoIntervalSec": 1.0,
     "droneEnumValue": 67,
     "droneSubEnumValue": 0
   },
@@ -152,6 +163,7 @@
     "sensorHeight": 7.2,
     "imageWidth": 8064,
     "imageHeight": 6048,
+    "minPhotoIntervalSec": 1.0,
     "droneEnumValue": 76,
     "droneSubEnumValue": 0
   },
@@ -165,6 +177,7 @@
     "sensorHeight": 7.2,
     "imageWidth": 8192,
     "imageHeight": 6144,
+    "minPhotoIntervalSec": 1.0,
     "droneEnumValue": 77,
     "droneSubEnumValue": 0
   },
@@ -178,6 +191,7 @@
     "sensorHeight": 4.8,
     "imageWidth": 4000,
     "imageHeight": 3000,
+    "minPhotoIntervalSec": 2.0,
     "droneEnumValue": 103,
     "droneSubEnumValue": 0
   },
@@ -191,6 +205,7 @@
     "sensorHeight": 4.8,
     "imageWidth": 4000,
     "imageHeight": 3000,
+    "minPhotoIntervalSec": 2.0,
     "droneEnumValue": 110,
     "droneSubEnumValue": 0
   },
@@ -204,6 +219,7 @@
     "sensorHeight": 4.72,
     "imageWidth": 4000,
     "imageHeight": 3000,
+    "minPhotoIntervalSec": 2.0,
     "droneEnumValue": 0,
     "droneSubEnumValue": 0
   },
@@ -217,6 +233,7 @@
     "sensorHeight": 8.8,
     "imageWidth": 5472,
     "imageHeight": 3648,
+    "minPhotoIntervalSec": 0.7,
     "droneEnumValue": 8,
     "droneSubEnumValue": 0
   },
@@ -230,6 +247,7 @@
     "sensorHeight": 13.0,
     "imageWidth": 5280,
     "imageHeight": 3956,
+    "minPhotoIntervalSec": 0.7,
     "droneEnumValue": 60,
     "droneSubEnumValue": 0
   },
@@ -243,6 +261,7 @@
     "sensorHeight": 13.0,
     "imageWidth": 5280,
     "imageHeight": 3956,
+    "minPhotoIntervalSec": 0.7,
     "droneEnumValue": 63,
     "droneSubEnumValue": 0
   },
@@ -256,6 +275,7 @@
     "sensorHeight": 13.0,
     "imageWidth": 5280,
     "imageHeight": 3956,
+    "minPhotoIntervalSec": 0.7,
     "droneEnumValue": 64,
     "droneSubEnumValue": 0
   },
@@ -269,6 +289,7 @@
     "sensorHeight": 13.0,
     "imageWidth": 5280,
     "imageHeight": 3956,
+    "minPhotoIntervalSec": 0.7,
     "droneEnumValue": 61,
     "droneSubEnumValue": 0
   }

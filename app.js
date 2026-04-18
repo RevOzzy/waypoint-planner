@@ -372,8 +372,16 @@ function recompute() {
     ? totalLen / state.speedMs + Math.max(0, lines.length - 1) * TURN_TIME_S
     : 0;
 
+  const shotTimeSec  = state.speedMs > 0 ? interval / state.speedMs : 0;
+  const minInterval  = drone.minPhotoIntervalSec || 2.0;
+  const maxSpeedMs   = interval / minInterval;
+
   updateMapDisplay();
-  updateStatsDisplay({ gsd, areaM2, spacing, interval, photoCount: wps.length, lineCount: lines.length, flightSec });
+  updateStatsDisplay({
+    gsd, areaM2, spacing, interval,
+    photoCount: wps.length, lineCount: lines.length, flightSec,
+    shotTimeSec, minInterval, maxSpeedMs,
+  });
   autoSave();
 }
 
@@ -406,22 +414,37 @@ function updateStatsDisplay(s) {
     return;
   }
 
+  const tooFast = s.shotTimeSec > 0 && s.shotTimeSec < s.minInterval;
+  const shotTimeColor = tooFast ? 'var(--danger)' : 'var(--accent)';
+
   const rows = [
-    ['GSD',             `${toDispGSD(s.gsd)} ${gsdUnit()}`],
-    ['Area',            toDispArea(s.areaM2)],
-    ['Photos',          s.photoCount.toLocaleString()],
-    ['Flight Lines',    s.lineCount],
-    ['Est. Flight Time',fmtDuration(s.flightSec)],
-    ['Line Spacing',    toDispDist(s.spacing)],
-    ['Trigger Interval',toDispDist(s.interval)],
+    ['GSD',              `${toDispGSD(s.gsd)} ${gsdUnit()}`],
+    ['Area',             toDispArea(s.areaM2)],
+    ['Photos',           s.photoCount.toLocaleString()],
+    ['Flight Lines',     s.lineCount],
+    ['Est. Flight Time', fmtDuration(s.flightSec)],
+    ['Line Spacing',     toDispDist(s.spacing)],
+    ['Trigger Interval', toDispDist(s.interval)],
+    ['Shot Interval',    `${s.shotTimeSec.toFixed(1)}s (min ${s.minInterval}s)`],
+    ['Max Safe Speed',   toDispSpeed(s.maxSpeedMs) + ' ' + speedUnit()],
   ];
 
-  panel.innerHTML = rows.map(([label, val]) =>
-    `<div class="stat-row">
+  panel.innerHTML = rows.map(([label, val], i) => {
+    const isShot = label === 'Shot Interval';
+    const color  = isShot ? shotTimeColor : 'var(--accent)';
+    return `<div class="stat-row">
        <span class="stat-label">${label}</span>
-       <span class="stat-value">${val}</span>
-     </div>`
-  ).join('');
+       <span class="stat-value" style="color:${color}">${val}</span>
+     </div>`;
+  }).join('');
+
+  if (tooFast) {
+    panel.innerHTML += `<div class="warning-badge">
+      ⚠ Flying too fast! At ${toDispSpeed(state.speedMs)} ${speedUnit()} the drone only has
+      ${s.shotTimeSec.toFixed(1)}s between shots but needs ${s.minInterval}s.
+      Reduce speed to ${toDispSpeed(s.maxSpeedMs)} ${speedUnit()} or lower.
+    </div>`;
+  }
 
   if (s.photoCount > MAX_WP_PER_KMZ) {
     panel.innerHTML += `<div class="warning-badge">
