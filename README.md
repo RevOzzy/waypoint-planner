@@ -10,6 +10,8 @@ Waypoint Planner is a simple, no-build web app for planning and organizing drone
 
 This project is designed to be fast, portable, and easy to run locally.
 
+Waypoint Planner exports DJI WPML mission files in KMZ format for compatible DJI Fly and DJI Pilot 2 workflows. Compatibility depends on drone model, controller, app version, and DJI firmware support. Always test-import a mission on your specific device before field use.
+
 ---
 
 ![Waypoint Planner Screenshot](docs/screenshot.jpg)
