@@ -121,7 +121,7 @@ Edit `drone-profiles.json` and add an entry following this schema:
   "droneEnumValue": 67,     // DJI WPML enum
   "droneSubEnumValue": 0
 }
-
+```
 ---
 
 ## Limitations
